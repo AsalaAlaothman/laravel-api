@@ -16,8 +16,15 @@ class CustomerFactory extends Factory
      */
     public function definition()
     {
+        $type = $this->faker->randomElement(['I', 'C']);
+        $name = ($type == 'I') ? $this->faker->name() : $this->faker->company();
         return [
-            //
+            'name' => $name,
+            'type' => $type,
+            'email' => $this->faker->email(),
+            'address' => $this->faker->streetAddress(),
+            'city' => $this->faker->city(),
+            'postal_code' => $this->faker->postcode(),
         ];
     }
 }
